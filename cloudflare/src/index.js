@@ -46,7 +46,6 @@ export default {
       return new Response("Bad JSON", { status: 400 });
     }
 
-    // Await processing so errors are caught and logged reliably.
     try {
       await handleUpdate(update, env);
     } catch (err) {
@@ -56,7 +55,6 @@ export default {
       });
     }
 
-    // Telegram receives a response even if message processing fails.
     return new Response("OK");
   },
 
@@ -83,17 +81,13 @@ async function handleUpdate(update, env) {
   const configuredGroupId = String(env.SCHOOLMATE_GROUP_ID || "");
   const text = String(msg.text || "").trim();
 
-  // Diagnostic information only; never log the message text or token.
-  console.log(
-    "SchoolMate: incoming message",
-    JSON.stringify({
-      chatId,
-      configuredGroupId,
-      hasText: Boolean(text),
-      userId: msg.from.id,
-      updateId: update?.update_id ?? null
-    })
-  );
+  // Safe diagnostics: never log group IDs, message text, or tokens.
+  console.log("SchoolMate: incoming message", {
+    groupIdConfigured: Boolean(configuredGroupId),
+    groupIdLength: configuredGroupId.length,
+    hasText: Boolean(text),
+    updateId: update?.update_id ?? null
+  });
 
   if (!configuredGroupId || chatId !== configuredGroupId) {
     console.log("SchoolMate: group ID mismatch");
@@ -363,7 +357,6 @@ async function send(env, chatId, text) {
   }
 
   if (!response.ok || !data.ok) {
-    // Do not log the URL or bot token.
     throw new Error(
       `Telegram sendMessage failed: HTTP ${response.status}; ${data.description || "Unknown Telegram API error"}`
     );
