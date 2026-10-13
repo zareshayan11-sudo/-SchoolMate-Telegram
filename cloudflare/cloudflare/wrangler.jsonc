@@ -2,7 +2,7 @@
 {
   "$schema": "node_modules/wrangler/config-schema.json",
   "name": "schoolmate-telegram",
-  "main": "cloudflare/src/index.js",
+  "main": "src/index.js",
   "compatibility_date": "2026-10-13",
   "triggers": {
     "crons": ["30 4 * * *"]
