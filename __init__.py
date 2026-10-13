@@ -1,0 +1,1 @@
+"""SchoolMate Telegram bot package."""
