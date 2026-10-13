@@ -1,0 +1,14 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "schoolmate-telegram",
+  "main": "src/index.js",
+  "compatibility_date": "2026-10-13",
+  "triggers": { "crons": ["0 5 * * *"] },
+  "d1_databases": [
+    {
+      "binding": "DB",
+      "database_name": "schoolmate-db",
+      "database_id": "REPLACE_WITH_D1_DATABASE_ID"
+    }
+  ]
+}
