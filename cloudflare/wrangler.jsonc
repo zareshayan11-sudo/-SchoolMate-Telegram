@@ -1,16 +1,20 @@
 {
-  "$schema": "node_modules/wrangler/config-schema.json",
-  "name": "schoolmate-telegram",
-  "main": "src/index.js",
-  "compatibility_date": "2026-10-13",
-  "triggers": {
-    "crons": ["30 4 * * *"]
-  },
-  "d1_databases": [
-    {
-      "binding": "DB",
-      "database_name": "schoolmate-db",
-      "database_id": "68693f01-9c92-4de3-bddf-cfd8ada1025f"
-    }
-  ]
+"$schema": "node_modules/wrangler/config-schema.json",
+"name": "schoolmate-telegram",
+"main": "src/index.js",
+"compatibility_date": "2026-10-13",
+"triggers": {
+"crons": ["30 4 * * *"]
+},
+"vars": {
+"SCHOOLMATE_GROUP_ID": "-1003923803854",
+"SCHOOLMATE_EDITOR_IDS": "2139944708"
+},
+"d1_databases": [
+{
+"binding": "DB",
+"database_name": "schoolmate-db",
+"database_id": "68693f01-9c92-4de3-bbdd-cfd8ada1025f"
+}
+]
 }
